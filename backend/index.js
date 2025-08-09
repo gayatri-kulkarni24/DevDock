@@ -2,7 +2,7 @@ const yargs = require("yargs");
 const { hideBin } = require("yargs/helpers");
 
 const { initRepo } = require("./controllers/init");
-const { addFile } = require("./controllers/add");
+const { addRepo } = require("./controllers/add");
 const { commitChange } = require("./controllers/commit");
 const { pullCommand } = require("./controllers/pull");
 const { pushCommand } = require("./controllers/push");
@@ -19,7 +19,9 @@ yargs(hideBin(process.argv))
         type: "string",
       });
     },
-    addFile
+   (argv)=>{
+    addRepo(argv.file);
+   }
   )
   .command(
     "commit <message>",
